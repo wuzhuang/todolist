@@ -1,0 +1,111 @@
+html,body{
+    overflow: hidden;
+    width:100%;
+    margin:0;padding:0;
+    height:100%;
+}
+.container-fluid{
+    height:100%;
+}
+.container-fluid> .row{
+    height: 100%;
+}
+.container-fluid> .row div[class*="row"]{
+    height: 100%;
+}
+.left{
+    width:20%;
+    background:url(../img/1.jpg)no-repeat;
+    height:100%;
+    position: relative;
+}
+.right{
+    height:100%;
+    width:80%;
+    background:url(../img/2.jpg)repeat-x;
+}
+.search{
+    margin:20px 20px;
+
+}
+.to_do_list{
+    margin-top: 20px;
+}
+.to_do_list:before,.to_do_list:after{
+    content: "";
+    display: block;
+}
+.to_do_list:after{
+    clear: both;
+}
+.list input{
+    border: none;
+    background: #eee;
+    float:left;
+    width: 60%;
+}
+.list input:focus{
+    outline: none;
+    border:1px solid  #000;
+}
+.list{
+    overflow: hidden;
+}
+.delbtn{
+    margin-top:5px;
+    float: right;
+    visibility: hidden;
+    opacity:0;
+    transition: opacity .4s ease;
+}
+.delbtn:hover{
+    color: red;
+}
+.list:hover .delbtn {
+visibility: visible;
+    opacity: 1;
+}
+.addlist{
+    position: absolute;
+    left:40px;
+    bottom:20px;
+}
+.right .title{
+    overflow: hidden;
+    border-bottom:2px solid #888;
+}
+.title h3{
+    float: left;
+}
+.addcon{
+    float: right;
+    font-size: 25px;
+    line-height: 80px;
+}
+.conlist{
+   border-bottom: 1px solid #ccc;
+    overflow: hidden;
+    padding: 5px 0;
+}
+.conlist input{
+    width: 60%;
+    background: #fff;
+    border:none;
+}
+.conlist .delbtncon{
+    float: right;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .4s linear;
+}
+.conlist:hover .delbtncon{
+    visibility: visible;
+    opacity: 1;
+}
+.successnum{
+    padding: 2px 5px;
+    background:deepskyblue;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 12px;
+}

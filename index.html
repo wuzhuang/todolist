@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/todolist.css">
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="js/todolist.js"></script>
+</head>
+<body ng-app="myapp">
+<div class="container-fluid "ng-controller="ctrl">
+    <div class="row">
+        <!--left-->
+        <div class="left col-xs-4 col-sm-3">
+            <!--sousuo-->
+            <div class="input-group search">
+                <span class="input-group-addon glyphicon glyphicon-search" ></span>
+                <input type="text" class="form-control" placeholder="search" aria-describedby="basic-addon1" ng-model="search">
+            </div>
+            <!--jihua-->
+            <div class="success">
+                <span class="glyphicon glyphicon-ok"></span>
+                <span ng-click="showdone()">已完成</span>
+                <span class="successnum">{{successData.length}}</span>
+            </div>
+            <!--list-->
+            <div class="to_do_list">
+                <div class="list_info">
+                    <span class="glyphicon glyphicon-time"></span>
+                    <span>计划事项</span>
+                </div>
+                <div class="list" ng-repeat="item in data | filter:{title:search} track by item.id ">
+                    <input type="text" ng-model="item.title" ng-focus="focus(item.id)" ng-blur="blur(item.id)">
+                    <span class="glyphicon glyphicon-trash delbtn" ng-click=dellist(item.id)></span>
+                </div>
+            </div>
+            <!--list end-->
+            <!--add-->
+            <div class="add addlist" ng-click="addlist()">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            <span>添加列表</span>
+
+        </div>
+        </div>
+        <!--right-->
+        <div class="right col-xs-8 col-sm-9" ng-show="isshow">
+            <div class="title">
+                <h3>{{currentArr.title}}</h3>
+                <span class="glyphicon glyphicon-plus-sign addcon "ng-click="addcon()"></span>
+            </div>
+            <div class="conlist" ng-repeat="item in currentArr.son track by $index">
+                <span class="glyphicon glyphicon-ok-circle" ng-click="done(item.id)"></span>
+                <input type="text" ng-model="item.con" ng-blur="conblur()">
+                <span class="glyphicon glyphicon-trash delbtncon" ng-click="delcon(item.id)"></span>
+            </div>
+        </div>
+
+        <div class="right col-xs-8 col-sm-9" ng-show="!isshow">
+            <div class="title">
+                <h3>已完成事项</h3>
+                <span class="glyphicon glyphicon-plus-sign addcon "ng-click="addcon()"></span>
+            </div>
+            <div class="conlist" ng-repeat="item in successData track by $index">
+
+                <div style="display: inline-block">{{item[0].con}}</div>
+                <span class="glyphicon glyphicon-trash delbtncon" ng-click="deldone(item.id)"></span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
